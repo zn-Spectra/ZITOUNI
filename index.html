@@ -49,52 +49,6 @@
             border-radius: 12px;
         }
 
-        /* ─── Glow Orbs ─── */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(140px);
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.20;
-            will-change: transform;
-        }
-        .orb-1 {
-            width: 700px;
-            height: 700px;
-            background: #1a4b8a;
-            top: -25%;
-            left: -20%;
-            animation: orbFloat 22s ease-in-out infinite alternate;
-        }
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: #3b1a8a;
-            bottom: -20%;
-            right: -15%;
-            animation: orbFloat 26s ease-in-out infinite alternate-reverse;
-        }
-        .orb-3 {
-            width: 400px;
-            height: 400px;
-            background: #0d6b6b;
-            top: 40%;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: orbFloat 30s ease-in-out infinite alternate;
-            opacity: 0.10;
-        }
-
-        @keyframes orbFloat {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                transform: translate(60px, -40px) scale(1.1);
-            }
-        }
-
         /* ─── Glass Card ─── */
         .glass-card {
             background: rgba(14, 20, 36, 0.70);
@@ -192,76 +146,6 @@
             transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* ─── Hero Stat ─── */
-        .hero-stat-value {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-        }
-        .hero-stat-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: #6a7a94;
-            font-weight: 500;
-        }
-
-        /* ─── Three.js Container ─── */
-        #three-container {
-            border-radius: 8px;
-            overflow: hidden;
-            background: rgba(8, 12, 24, 0.50);
-            border: 1px solid rgba(45, 125, 245, 0.08);
-            min-height: 200px;
-        }
-
-        /* ─── Responsive tweaks ─── */
-        @media (max-width: 640px) {
-            .hero-stat-value {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* ─── Fade In ─── */
-        .fade-in {
-            animation: fadeUp 0.8s ease forwards;
-            opacity: 0;
-        }
-        .fade-in-d1 {
-            animation-delay: 0.05s;
-        }
-        .fade-in-d2 {
-            animation-delay: 0.15s;
-        }
-        .fade-in-d3 {
-            animation-delay: 0.25s;
-        }
-        .fade-in-d4 {
-            animation-delay: 0.35s;
-        }
-        .fade-in-d5 {
-            animation-delay: 0.45s;
-        }
-
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(14px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ─── Divider ─── */
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, rgba(45, 125, 245, 0.15), transparent);
-            margin: 0.5rem 0 1.5rem 0;
-        }
-
         /* ─── Button primary ─── */
         .btn-primary {
             background: linear-gradient(135deg, #2d7df5, #5b6cf0);
@@ -343,20 +227,127 @@
             color: #2d7df5;
             margin-bottom: 0.75rem;
         }
+
+        /* ─── Background Slideshow ─── */
+        .bg-slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-slideshow .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            will-change: opacity;
+        }
+        .bg-slideshow .slide.active {
+            opacity: 1;
+        }
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 12, 24, 0.65);
+            /* Ajustez l'opacité selon vos goûts */
+            z-index: 1;
+            pointer-events: none;
+        }
+        /* Contenu au-dessus de l'overlay */
+        .content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 640px) {
+            .hero-stat-value {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ─── Fade In ─── */
+        .fade-in {
+            animation: fadeUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        .fade-in-d1 {
+            animation-delay: 0.05s;
+        }
+        .fade-in-d2 {
+            animation-delay: 0.15s;
+        }
+        .fade-in-d3 {
+            animation-delay: 0.25s;
+        }
+        .fade-in-d4 {
+            animation-delay: 0.35s;
+        }
+        .fade-in-d5 {
+            animation-delay: 0.45s;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- ─── Glow Orbs ─── -->
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+    <!-- ─── Diaporama d'arrière-plan ─── -->
+    <div class="bg-slideshow" id="bg-slideshow">
+        <!-- Chaque slide : remplacez les URL par vos propres images 4K -->
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2070&auto=format&fit=crop');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop');"></div>
+    </div>
+    <div class="bg-overlay"></div>
 
     <!-- ─── React Mount ─── -->
-    <div id="root"></div>
+    <div id="root" class="content"></div>
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
+
+        // ─── Gestion du diaporama ───
+        const useSlideshow = (interval = 7000) => {
+            const [current, setCurrent] = useState(0);
+            const slides = document.querySelectorAll('#bg-slideshow .slide');
+            const total = slides.length;
+
+            useEffect(() => {
+                if (total === 0) return;
+                const timer = setInterval(() => {
+                    const next = (current + 1) % total;
+                    slides.forEach((s, i) => {
+                        s.classList.toggle('active', i === next);
+                    });
+                    setCurrent(next);
+                }, interval);
+                return () => clearInterval(timer);
+            }, [current, total, interval, slides]);
+
+            return { current, total };
+        };
 
         // ─── Icons ───
         const Icon3D = () => ( <
@@ -446,24 +437,6 @@
             /svg>
         );
 
-        const IconCode = () => ( <
-            svg xmlns = "http://www.w3.org/2000/svg"
-            width = "20"
-            height = "20"
-            viewBox = "0 0 24 24"
-            fill = "none"
-            stroke = "currentColor"
-            strokeWidth = "1.6"
-            strokeLinecap = "round"
-            strokeLinejoin = "round" >
-            <
-            polyline points = "16 18 22 12 16 6" />
-            <
-            polyline points = "8 6 2 12 8 18" />
-            <
-            /svg>
-        );
-
         // ─── Three.js Preview ───
         const ThreeDPreview = () => {
             const mountRef = useRef(null);
@@ -507,7 +480,6 @@
                 rim.position.set(0, -2, 6);
                 scene.add(rim);
 
-                // ── Main object: Icosahedron with wireframe overlay ──
                 const geom = new THREE.IcosahedronGeometry(0.8, 1);
                 const mat = new THREE.MeshPhysicalMaterial({
                     color: 0x2d7df5,
@@ -522,7 +494,6 @@
                 mesh.castShadow = true;
                 scene.add(mesh);
 
-                // Wireframe
                 const wireGeom = new THREE.IcosahedronGeometry(0.82, 1);
                 const wireMat = new THREE.MeshBasicMaterial({
                     color: 0x60a5fa,
@@ -533,7 +504,6 @@
                 const wire = new THREE.Mesh(wireGeom, wireMat);
                 scene.add(wire);
 
-                // Inner glow ring
                 const ringGeom = new THREE.TorusGeometry(0.95, 0.015, 16, 60);
                 const ringMat = new THREE.MeshBasicMaterial({
                     color: 0x2d7df5,
@@ -545,7 +515,6 @@
                 ring.rotation.z = 0.3;
                 scene.add(ring);
 
-                // ── Floor ──
                 const floorGeom = new THREE.PlaneGeometry(6, 6);
                 const floorMat = new THREE.ShadowMaterial({
                     opacity: 0.15,
@@ -557,7 +526,6 @@
                 floor.receiveShadow = true;
                 scene.add(floor);
 
-                // ── Particles ──
                 const particleCount = 160;
                 const posArray = new Float32Array(particleCount * 3);
                 for (let i = 0; i < particleCount * 3; i++) {
@@ -638,6 +606,9 @@
 
                     // ─── APP ───
                     const App = () => {
+                        // Initialiser le diaporama (effet de bord géré par le hook)
+                        useSlideshow(6000); // change toutes les 6 secondes
+
                         const projects = [
                             { name: 'Neon Cyberpunk City', status: 'In Progress', updated: '2h ago', engine: 'Unity' },
                             { name: 'Mystic Forest Realm', status: 'Review', updated: '1d ago', engine: 'Godot' },
