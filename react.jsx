@@ -1,5 +1,32 @@
 const { useState, useEffect, useRef } = React;
 
+const ThemeToggle = () => {
+  const [isDark, setIsDark] = useState(() => {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored === 'dark';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    const html = document.documentElement;
+    if (isDark) {
+      html.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      html.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDark]);
+
+  const toggle = () => setIsDark(!isDark);
+
+  return (
+    <button className="theme-toggle" onClick={toggle} aria-label="Toggle dark mode">
+      {isDark ? '🌙' : '☀️'}
+    </button>
+  );
+};
+
 /* ───────────────────────── Hooks ───────────────────────── */
 
 function useSlideshow(interval = 6000) {
@@ -413,6 +440,7 @@ function App() {
 
   return (
     <main className="min-h-screen max-w-6xl mx-auto px-5 sm:px-8 py-5 relative z-10">
+      <ThemeToggle />
 
       {/* NAVBAR */}
       <div className="flex items-center justify-between py-4 mb-4 border-b border-[var(--border)] sticky top-0 bg-[rgba(13,15,18,0.85)] backdrop-blur-md z-20">
