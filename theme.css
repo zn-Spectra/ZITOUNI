@@ -1,0 +1,50 @@
+/* Theme CSS for premium UI */
+:root {
+  --font-primary: 'Inter', sans-serif;
+  --color-primary-light: #4d9bff;
+  --color-primary-dark: #8fc3ff;
+  --bg-primary: rgba(13,15,18,0.6);
+  --bg-panel-light: rgba(255,255,255,0.15);
+  --bg-panel-dark: rgba(0,0,0,0.35);
+  --bg-panel: var(--bg-panel-light);
+  --text-light: #e0e0e0;
+  --text-dark: #1a1a1a;
+}
+
+html {
+  color-scheme: light dark;
+  background: var(--bg-primary);
+  color: var(--text-light);
+  font-family: var(--font-primary);
+}
+
+html.dark {
+  --bg-panel: var(--bg-panel-dark);
+  --text: var(--text-dark);
+}
+
+.panel {
+  backdrop-filter: blur(12px);
+  background: var(--bg-panel);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+button, .btn-primary, .btn-outline {
+  transition: background 0.3s, transform 0.2s;
+}
+button:hover, .btn-primary:hover, .btn-outline:hover {
+  transform: translateY(-2px);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  background: var(--bg-panel);
+  border-radius: 50%;
+  padding: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
