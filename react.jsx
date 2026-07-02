@@ -1,3 +1,5 @@
+import './theme.css';
+import ThemeToggle from './ThemeToggle.jsx';
 const { useState, useEffect, useRef } = React;
 
 /* ───────────────────────── Hooks ───────────────────────── */
@@ -413,6 +415,7 @@ function App() {
 
   return (
     <main className="min-h-screen max-w-6xl mx-auto px-5 sm:px-8 py-5 relative z-10">
+      <ThemeToggle />
 
       {/* NAVBAR */}
       <div className="flex items-center justify-between py-4 mb-4 border-b border-[var(--border)] sticky top-0 bg-[rgba(13,15,18,0.85)] backdrop-blur-md z-20">
