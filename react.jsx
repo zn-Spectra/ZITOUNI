@@ -616,7 +616,7 @@ function App() {
 
       {/* FOOTER */}
       <div className="pt-10 pb-5 mt-2 border-t border-[var(--border)] flex flex-col sm:flex-row justify-between items-center gap-3">
-        <div className="hud-label">© 2026 Nidhal Zitouni · Artiste 3D & Développeur Unity/Godot</div>
+        <div className="hud-label">© 2026 Nidhal Zitouni · Artiste 3D &amp; Développeur Unity/Godot</div>
         <div className="flex flex-wrap items-center gap-5 hud-label">
           <a href="#" className="hover:text-[var(--text)] transition-colors">GitHub</a>
           <a href="#" className="hover:text-[var(--text)] transition-colors">LinkedIn</a>
@@ -628,7 +628,7 @@ function App() {
 
       {/* MODAL */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4" onClick={closeModal}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{backgroundColor: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(8px)'}} onClick={closeModal}>
           <div className="panel max-w-2xl w-full p-6" onClick={(e) => e.stopPropagation()}>
             <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-64 object-cover rounded-lg mb-4" />
             <span className="engine-tag">{selectedProject.engine}</span>
