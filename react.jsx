@@ -1,4 +1,6 @@
+/* @jsxRuntime classic */
 const { useState, useEffect, useRef } = React;
+
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(() => {
