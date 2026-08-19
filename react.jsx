@@ -1,5 +1,3 @@
-import './theme.css';
-import ThemeToggle from './ThemeToggle.jsx';
 const { useState, useEffect, useRef } = React;
 
 const ThemeToggle = () => {
